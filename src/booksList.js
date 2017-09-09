@@ -5,35 +5,38 @@ import * as BooksAPI from './BooksAPI'
 
 class BooksList extends Component {
 
-  modifyBook = (book, shelf) => {
-
-    BooksAPI.update(book, shelf).then(data => {
-      console.log(data)
+  modifyShelfs = (bookMod, shelfMod) => {
+    const { shelfs, updateShelfs } = this.props
+    let shelfAux = []
+    BooksAPI.update(bookMod, shelfMod).then(data => {
+      shelfAux = shelfs[bookMod.shelf].filter(bookSaved =>
+        bookMod.id !== bookSaved.id
+      )
+      shelfs[bookMod.shelf] = shelfAux
+      if (shelfMod !== 'none') {
+        bookMod.shelf = shelfMod
+        shelfs[shelfMod].push(bookMod)
+      }
+      updateShelfs(shelfs)
     })
-    console.log(book)
-    console.log(shelf)
   }
 
   render () {
-    const { shelfs, shelfsName } = this.props
+    const { shelfs, shelfsName, name } = this.props
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <h1>MyReads</h1>
+          <h1>{ name }</h1>
         </div>
         <div className="list-books-content">
           {
             shelfsName.getNames().filter(name => name !== 'none').map(( name, index ) =>
                   {
                     const valueShelf = shelfsName.getValue(name)
-                    // console.log(valueShelf)
-                    // console.log(shelfs)
-                    console.log(valueShelf)
-                    console.log('selfs', shelfs[valueShelf])
                     return <BookShelf key={index}
                       books={shelfs[valueShelf]}
                       title={ name }
-                      selectShelf={this.modifyBook}
+                      selectShelf={this.modifyShelfs}
                     />
                   }
              )

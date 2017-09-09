@@ -6,6 +6,7 @@ import BookSearch from './booksSearch'
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import { Shelfs } from './shelfObject'
+import { APPNAME } from './constants'
 
 class BooksApp extends React.Component {
 
@@ -27,6 +28,10 @@ class BooksApp extends React.Component {
       ).catch((e) => console.log(e))
     }
 
+  updateShelfs = (shelfs) => {
+    this.setState({shelfs})
+  }
+
   fillShelfs = books => {
     let { shelfs } = this.state
     books.forEach(book => {
@@ -39,11 +44,15 @@ class BooksApp extends React.Component {
   render() {
     const { shelfs, load } = this.state
     const shelfsObject = new Shelfs()
-    console.log('load', load)
     return (
       <div className="app">
         <Route exact path='/' render={
-          () => load && <BooksList shelfs={shelfs} shelfsName={shelfsObject} />
+          () => load && <BooksList
+            name={APPNAME}
+            shelfs={shelfs}
+            shelfsName={shelfsObject}
+            updateShelfs={this.updateShelfs}
+          />
         }
         />
         <Route exact path='/search' render={

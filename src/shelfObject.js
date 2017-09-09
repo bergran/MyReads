@@ -14,6 +14,16 @@ class Shelfs {
     const indexName = this.names.indexOf(name)
     return indexName >= 0 ? this.getAsValue()[indexName] : ''
   }
+  getName = value => {
+    const isUpper = character =>
+      character === character.toUpperCase()
+    const capitalize = word =>
+      `${word.charAt(0).toUpperCase()}${word.slice(1).toLowerCase()}`
+    const splittedText = value.split('')
+    const text = splittedText.map(character =>
+      isUpper(character) ? ` ${character}` : character)
+    return capitalize(text.join(''))
+  }
 }
 
 export {
