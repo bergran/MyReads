@@ -1,18 +1,17 @@
-import React, { Component } from 'react'
-import { Select } from './select'
+import React from 'react'
+import { SelectShelf } from './select'
 
 const Book = (props) => {
   /*
   * param book: (object) has properties
   */
-  const { title, image, author, imageLinks, categories, selectCategories } = props
+  const { id, title, author, imageLinks, selectShelf } = props
   return (
     <div className="book">
       <div className="book-top">
-        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imageLinks.thumbnail})` }}></div>
+        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imageLinks.thumbnail})`}}></div>
         <div className="book-shelf-changer">
-          <Select categories={categories}
-            selectCategorie={() => selectCategories}
+          <SelectShelf selectShelf={(shelf) => selectShelf(id, shelf)}
             />
         </div>
       </div>

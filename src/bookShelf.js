@@ -2,8 +2,15 @@ import React, { Component } from 'react'
 import Book from './book'
 
 class BookShelf extends Component {
+
+  selectShelf = (bookId, shelf) => {
+    const { books, selectShelf } = this.props
+    const book = books.filter(book => book.id === bookId)[0]
+    selectShelf(book, shelf)
+  }
+
   render() {
-    const { books, shelfsName, title } = this.props
+    const { books, title, selectShelf } = this.props
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{title}</h2>
@@ -12,7 +19,7 @@ class BookShelf extends Component {
             {
               books.map(book => (
                 <li key={book.id}>
-                  <Book categories={shelfsName} selectCategories={() => {}}
+                  <Book selectShelf={this.selectShelf}
                   {...book}
                   />
                 </li>

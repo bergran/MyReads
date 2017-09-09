@@ -1,8 +1,18 @@
 import React, { Component } from 'react'
 import { BookShelf } from './bookShelf'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
 class BooksList extends Component {
+
+  modifyBook = (book, shelf) => {
+
+    BooksAPI.update(book, shelf).then(data => {
+      console.log(data)
+    })
+    console.log(book)
+    console.log(shelf)
+  }
 
   render () {
     const { shelfs, shelfsName } = this.props
@@ -13,12 +23,19 @@ class BooksList extends Component {
         </div>
         <div className="list-books-content">
           {
-            shelfsName.filter(name => name !== 'none').map(( name, index ) =>
-                  <BookShelf key={index}
-                    books={shelfs[name]}
-                    title={ name }
-                    shelfsName={ shelfsName }
-                  />
+            shelfsName.getNames().filter(name => name !== 'none').map(( name, index ) =>
+                  {
+                    const valueShelf = shelfsName.getValue(name)
+                    // console.log(valueShelf)
+                    // console.log(shelfs)
+                    console.log(valueShelf)
+                    console.log('selfs', shelfs[valueShelf])
+                    return <BookShelf key={index}
+                      books={shelfs[valueShelf]}
+                      title={ name }
+                      selectShelf={this.modifyBook}
+                    />
+                  }
              )
           }
         </div>
