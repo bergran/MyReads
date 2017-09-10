@@ -1,15 +1,31 @@
 import React from 'react'
+import { Shelfs } from './shelfObject'
 
-const Select = (props) => {
-  const { categories, selectCategorie } = props
-  // Refactorize
-  return (<select onChange={(e) => selectCategorie(e.target.value)}>
+const SelectShelf = (props) => {
+  /**
+  * this Component is used to get all shelfs and show to the user into options
+  * values
+  * param shelfs: (Array) contains all shelfs available
+  * param selectShelf: (funct) is called when an option is changed by user
+  **/
+  const { selectShelf, selectedShelf } = props
+  const shelfsOptions = new Shelfs()
+  return (<select
+    onChange={(e) => selectShelf(e.target.value)}
+    value={selectedShelf}
+  >
     <option value="none" disabled>Move to...</option>
-    <option value="currentlyReading">Currently Reading</option>
-    <option value="wantToRead">Want to Read</option>
-    <option value="read">Read</option>
-    <option value="none">None</option>
+    {
+      shelfsOptions.names.map((name, index) => (
+        <option
+          key={index}
+          value={shelfsOptions.getValue(name)}
+        >
+          {name}
+        </option>
+      ))
+    }
   </select>)
 }
 
-export { Select }
+export { SelectShelf }
