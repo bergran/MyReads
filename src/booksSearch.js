@@ -8,14 +8,20 @@ class BookSearch extends Component {
     books: []
   }
 
+  onSearch = (data) => {
+    const books = 'error' in data ? [] : data
+    this.setState({books})
+  }
+
   render () {
     const { books } = this.state
     return (
       <div className="search-books">
         <BookSearchBar back='/'
-          onChange={() => {}}
+          placeholder='Search by title or author'
+          onSearch={this.onSearch}
           />
-        <BookSearchResult books={books} categories={{}} />
+        <BookSearchResult books={books} />
       </div>
     )
   }

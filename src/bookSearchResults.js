@@ -6,9 +6,10 @@ const BookSearchResult = (props) => (
     <ol className="books-grid">
       {
         props.books.map((book) =>
-        <li>
-            <Book book={book}
-              categories={props.categories} />
+        <li key={book.id}>
+          <Book selectShelf={() => {}}
+            {...book}
+          />
         </li>
       )}
     </ol>
