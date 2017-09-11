@@ -51,7 +51,7 @@ class BooksApp extends React.Component {
       const shelfsObject = new Shelfs()
       const { shelfs } = this.state
       let books = []
-      shelfsObject.getAsValue().map(shelf => {
+      shelfsObject.getAsValue().forEach(shelf => {
           shelfs[shelf].forEach(book => books.push(book))
           }
       )
