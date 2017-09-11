@@ -5,7 +5,7 @@ const Book = (props) => {
   /*
   * param book: (object) has properties
   */
-  const { id, title, author, imageLinks, shelf, selectShelf } = props
+  const { id, title, author, imageLinks, shelf='none', selectShelf } = props
   return (
     <div className="book">
       <div className="book-top">
