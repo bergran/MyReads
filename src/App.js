@@ -32,6 +32,12 @@ class BooksApp extends React.Component {
     this.setState({shelfs})
   }
 
+  addBook = (book, shelf) => {
+    const { shelfs } = this.state
+    shelfs[shelf].push(book)
+    this.setState({shelfs})
+  }
+
   fillShelfs = books => {
     let { shelfs } = this.state
     books.forEach(book => {
@@ -41,9 +47,21 @@ class BooksApp extends React.Component {
     this.setState({ shelfs: shelfs, load: true })
   }
 
+  getBooks = () => {
+      const shelfsObject = new Shelfs()
+      const { shelfs } = this.state
+      let books = []
+      shelfsObject.getAsValue().map(shelf => {
+          shelfs[shelf].forEach(book => books.push(book))
+          }
+      )
+      return books
+  }
+
   render() {
     const { shelfs, load } = this.state
     const shelfsObject = new Shelfs()
+    const books = this.getBooks()
     return (
       <div className="app">
         <Route exact path='/' render={
@@ -56,7 +74,10 @@ class BooksApp extends React.Component {
         }
         />
         <Route exact path='/search' render={
-          () => <BookSearch />
+          () => <BookSearch
+                    onAdd={this.addBook}
+                    books={books}
+                />
         }
         />
       </div>

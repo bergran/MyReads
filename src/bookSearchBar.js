@@ -16,7 +16,7 @@ class BookSearchBar extends Component {
   }
 
   render () {
-    const { back, onSearch, placeholder } = this.props
+    const { back, placeholder } = this.props
     return (
       <div className="search-books-bar">
         <Link className="close-search" to={back}>Close</Link>
