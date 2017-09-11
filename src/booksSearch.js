@@ -12,12 +12,12 @@ class BookSearch extends Component {
   onSearch = (data) => {
     let books = []
     if (!('error' in data)) {
-      data.forEach((book) => {
+      books = data.map((book) => {
         const booksSaved = this.props.books
-        const booksIdentical = booksSaved.filter(bookSave => book.id === bookSave.id)
-        if (booksIdentical.length === 0) {
-          books.push(book)
-        }
+        booksSaved.forEach(bookSave => {
+          book.id === bookSave.id ? book.shelf = bookSave.shelf : null
+        })
+        return book
       })
     }
     this.setState({books})
@@ -29,11 +29,7 @@ class BookSearch extends Component {
     const book = books.filter(book => book.id === bookId)[0]
     book.shelf = shelfTo
     BooksAPI.update(book, shelfTo).then(data => {
-      const newBooks = books.filter(book => book.id !== bookId)
       onAdd(book, shelfTo)
-      this.setState({
-          books: newBooks
-        })
     })
 
   }
