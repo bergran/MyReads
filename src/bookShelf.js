@@ -20,7 +20,7 @@ class BookShelf extends Component {
               books.map(book => (
                 <li key={book.id}>
                   <Book selectShelf={this.selectShelf}
-                  {...book}
+                  book={book}
                   />
                 </li>
               ))

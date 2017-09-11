@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import './bookModal.css'
 import BooksList from './booksList'
 import BookSearch from './booksSearch'
 import { Route } from 'react-router-dom'

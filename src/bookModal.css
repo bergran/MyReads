@@ -1,0 +1,66 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.modalWindow {
+  width: 900px;
+  height: 450px;
+  background: #FFF;
+  border-radius: 0.5em;
+}
+
+.modal-header {
+  background-color: rgb(66, 244, 92);
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 4px;
+  border-radius: 0.5em 0.5em 0 0;
+  padding-top: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0px;
+  font-size: 1.5em;
+  margin-left: 0.5em;
+  color: rgb(255, 255, 255);
+  width: 50%;
+  display: inline
+}
+
+.icon {
+  border-radius: 25%;
+  width: 20px;
+  height: 20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.icon:hover {
+  cursor: pointer
+}
+
+.icon-close {
+  background-color: red;
+  color: #FFF
+}
