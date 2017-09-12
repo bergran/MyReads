@@ -13,7 +13,13 @@ const BookModal = props => {
           </span>
         </div>
         <div className="modal-body">
-          qwerqwer
+          <div className="modal-cover" style={
+            {
+              backgroundImage: `url(${book.imageLinks.thumbnail})`
+            }}></div>
+          <div className='modal-description'>
+              {book.description}
+          </div>
         </div>
       </div>
     </div>

@@ -12,6 +12,15 @@ class Book extends Component {
   }
 
   setModal = () => {
+
+    const htmlElement = document.querySelector("html");
+    if (!this.state.modal) {
+      htmlElement.style.height = '100%'
+      htmlElement.style.overflow = 'hidden'
+    } else {
+      htmlElement.style.height = ''
+      htmlElement.style.overflow = 'auto'
+    }
     this.setState(prevState => ({
       modal: !prevState.modal
     }))
