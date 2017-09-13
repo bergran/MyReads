@@ -1,5 +1,6 @@
 import React from 'react'
 import { Rate } from './rate'
+import { ModalHeader } from "./modalHeader";
 
 import { Shelfs } from './shelfObject'
 const BookModal = props => {
@@ -10,22 +11,9 @@ const BookModal = props => {
   return (
     <div className="modal">
       <div className="modalWindow">
-        <div className="modal-header">
-          <h1 className="title">{book.title}</h1>
-          <span className="icon icon-right icon-close" onClick={close}>
-            <bold>x</bold>
-          </span>
-        </div>
+        <ModalHeader title={book.title} close={close}/>
         <div className="modal-body">
-          <div className='modal-head-body'>
-            <div className="modal-cover" style={
-                {
-                    backgroundImage: `url(${book.imageLinks.thumbnail})`
-                }}></div>
-            <div className='modal-description'>
-                {book.description}
-            </div>
-          </div>
+
           <div className='modal-characters'>
             <ul className='modal-properties'>
               <li className='elementProperty'>
