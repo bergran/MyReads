@@ -134,3 +134,73 @@ li.elementProperty {
 .modal-head-body {
   display: flex;
 }
+
+@media screen and (max-width: 740px) {
+  .modalWindow {
+    width: 330px;
+    height: 550px;
+    background: #FFF;
+    border-radius: 0.5em;
+  }
+
+  .title {
+    font-size: 1em;
+    width: 85%;
+  }
+
+  .modal-body {
+    margin: 1em 0 0 0;
+    width: 20.7em;
+    height: 29em;
+    overflow: auto;
+  }
+
+  .modal-head-body {
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .modal-description {
+    width: 90%;
+  }
+
+  .modal-cover {
+    width: 128px;
+  }
+
+  .modal-characters {
+    margin: 1em 2em 0em 2em;
+    height: 15em;
+  }
+
+  .modal-properties {
+    height: inherit;
+    width: inherit;
+  }
+
+  li.elementProperty {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 741px) and (max-width: 1024px) {
+  .modalWindow {
+    width: 650px;
+    height: 550px;
+    background: #FFF;
+    border-radius: 0.5em;
+  }
+
+  .title {
+    width: 90%
+  }
+
+  .modal-head-body {
+    justify-content: space-between;
+  }
+
+  .modal-description {
+    width: 70%;
+  }
+}
