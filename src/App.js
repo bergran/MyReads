@@ -59,7 +59,6 @@ class BooksApp extends React.Component {
 
   render() {
     const { shelfs, load } = this.state
-    const shelfsObject = new Shelfs()
     const books = this.getBooks()
     return (
       <div className="app">
@@ -67,7 +66,6 @@ class BooksApp extends React.Component {
           () => load && <BooksList
             name={APPNAME}
             shelfs={shelfs}
-            shelfsName={shelfsObject}
             updateShelfs={this.updateShelfs}
           />
         }

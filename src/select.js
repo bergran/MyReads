@@ -1,5 +1,6 @@
 import React from 'react'
 import { Shelfs } from './shelfObject'
+import PropTypes from 'prop-types'
 
 const SelectShelf = (props) => {
   /**
@@ -26,6 +27,11 @@ const SelectShelf = (props) => {
       ))
     }
   </select>)
+}
+
+SelectShelf.propTypes = {
+  selectShelf: PropTypes.func.isRequired,
+  selectedShelf: PropTypes.string.isRequired
 }
 
 export { SelectShelf }

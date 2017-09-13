@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BookSearchBar } from './bookSearchBar'
 import { BookSearchResult } from './bookSearchResults'
 import * as BooksAPI from './BooksAPI'
+import PropTypes from 'prop-types'
 
 class BookSearch extends Component {
 
@@ -48,6 +49,11 @@ class BookSearch extends Component {
       </div>
     )
   }
+}
+
+BookSearch.propTypes = {
+  books: PropTypes.array.isRequired,
+  onAdd: PropTypes.func.inRequired
 }
 
 export default BookSearch

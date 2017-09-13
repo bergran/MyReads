@@ -1,6 +1,7 @@
 import React from 'react'
 import Book from './book'
 import sortBy from 'sort-by'
+import PropTypes from 'prop-types'
 
 const BookSearchResult = (props) => {
     const bookSorted = props.books.sort(sortBy('title'))
@@ -19,6 +20,11 @@ const BookSearchResult = (props) => {
         </ol>
     </div>
     )
+}
+
+BookSearchResult.propTypes = {
+  books: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired
 }
 
 export { BookSearchResult }
