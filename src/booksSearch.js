@@ -4,6 +4,15 @@ import { BookSearchResult } from './bookSearchResults'
 import * as BooksAPI from './BooksAPI'
 import PropTypes from 'prop-types'
 
+/**
+* component that renders book search view and manage all books that are found
+* by user query and renders it
+*
+* @Param Books (Array): Books that are storage on the app, is used to compare
+* with result books from search to add them shelf to the book objects
+* @Param onAdd (func): it's throwed when user move book to new shelf
+**/
+
 class BookSearch extends Component {
 
   state = {

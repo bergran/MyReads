@@ -2,6 +2,17 @@ import React, { Component } from 'react'
 import Book from './book'
 import PropTypes from 'prop-types'
 
+/**
+* Component that renders a bookshelf, this contains shelf name's, books that
+* contain specific shelf and selectShelf that is a callback function that
+* send book that wants to be moved and shelf location
+*
+* @Param books (array): contains books object
+* @Param title (string): shelf name
+* @Param selectShelf (func): callback function that send to parent book object
+* and new shelf
+**/
+
 class BookShelf extends Component {
 
   selectShelf = (bookId, shelf) => {

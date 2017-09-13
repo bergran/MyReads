@@ -5,6 +5,15 @@ import * as BooksAPI from './BooksAPI'
 import PropTypes from 'prop-types'
 import { Shelfs } from './shelfObject'
 
+/**
+* Component that renders shelfs and manage books shelf location
+*
+* @Param shelfs (object): contains shelfs keys and books array for each shelf
+* @Param updateShelf (func): callback function that updateSelf with the new
+* book shelf location
+* @Param name (string): App name that will show in the header
+**/
+
 class BooksList extends Component {
 
   modifyShelfs = (bookMod, shelfMod) => {
