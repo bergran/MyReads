@@ -1,6 +1,7 @@
 import React from 'react'
 import { Rate } from './rate'
-import { ModalHeader } from "./modalHeader";
+import { ModalHeader } from './modalHeader';
+import { ModalHeadBody } from './ModalHeadBody'
 
 import { Shelfs } from './shelfObject'
 const BookModal = props => {
@@ -11,11 +12,21 @@ const BookModal = props => {
   return (
     <div className="modal">
       <div className="modalWindow">
-        <ModalHeader title={book.title} close={close}/>
+        <ModalHeader
+            title={book.title}
+            close={close}
+        />
         <div className="modal-body">
-
+          <ModalHeadBody
+            title={book.title}
+            image={book.imageLinks.thumbnail}
+            description={book.description}
+          />
           <div className='modal-characters'>
             <ul className='modal-properties'>
+              <li className='elementProperty'>
+                <p className='property'><strong>Title:</strong> {book.title}</p>
+              </li>
               <li className='elementProperty'>
                 <p className='property'><strong>Publish date:</strong> {book.publishedDate}</p>
               </li>
