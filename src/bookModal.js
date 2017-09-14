@@ -34,8 +34,8 @@ const BookModal = props => {
                 <p className='property'><strong>Shelf:</strong> { shelf }</p>
               </li>
               <li className='elementProperty'>
-                <div className='property'><strong>Average Rate:</strong>
-                  <Rate rate={book.averageRating} />
+                <div className='property'><strong>Average Rate: <Rate rate={book.averageRating} /></strong>
+
                 </div>
               </li>
               <li className='elementProperty'>
@@ -45,7 +45,7 @@ const BookModal = props => {
               </li>
               <li className='elementProperty'>
                 <strong>Authors:</strong>
-                <ul>
+                <ul className='authors'>
                     {
                         book.authors.map(
                             (author, index) =>

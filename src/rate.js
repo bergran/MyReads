@@ -12,9 +12,9 @@ const Rate = props => {
         }
     }
     return (
-        <div className='rate-container'>
+        <span className='rate-container'>
             { stars }
-        </div>
+        </span>
     )
 }
 
