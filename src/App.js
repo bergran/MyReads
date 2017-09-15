@@ -25,15 +25,11 @@ class BooksApp extends React.Component {
       ).catch((e) => console.log(e))
     }
 
-  updateShelfs = (shelf) => {
-    this.setState({shelf})
-  }
-
-  addBook = (book, shelfMod) => {
+  updateShelfs = (bookMod, shelfMod) => {
     let { shelf } = this.state
-    shelf = shelf.filter(bookSaved => bookSaved.id !== book.id)
-    console.log(book)
-    shelf.push(book)
+    shelf = shelf.filter(book => book.id !== bookMod.id)
+    bookMod.shelf = shelfMod
+    shelf.push(bookMod)
     this.setState({shelf})
   }
 
@@ -68,10 +64,10 @@ class BooksApp extends React.Component {
         }
         />
         <Route exact path='/search' render={
-          () => <BookSearch
-                    onAdd={this.addBook}
+          () => (<BookSearch
+                    onAdd={this.updateShelfs}
                     books={books}
-                />
+                />)
         }
         />
       </div>
