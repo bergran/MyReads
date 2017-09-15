@@ -1,0 +1,62 @@
+import React, { Component } from 'react'
+import { BookShelf } from './bookShelf'
+import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
+import PropTypes from 'prop-types'
+import { Shelfs } from './shelfObject'
+
+/**
+* Component that renders shelfs and manage books shelf location
+*
+* @Param shelfs (object): contains shelfs keys and books array for each shelf
+* @Param updateShelf (func): callback function that updateSelf with the new
+* book shelf location
+* @Param name (string): App name that will show in the header
+**/
+
+class BooksList extends Component {
+
+  modifyShelfs = (bookMod, shelfMod) => {
+    const { updateShelfs } = this.props
+    BooksAPI.update(bookMod, shelfMod).then(data => {
+      updateShelfs(bookMod, shelfMod)
+    })
+  }
+
+  render () {
+    const { shelfs, name } = this.props
+    const shelfsName = new Shelfs()
+    return (
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>{ name }</h1>
+        </div>
+        <div className="list-books-content">
+          {
+            shelfsName.getNames().filter(name => name !== 'none').map(( name, index ) =>
+                  {
+                    const valueShelf = shelfsName.getValue(name)
+                    return (<BookShelf key={index}
+                      books={shelfs[valueShelf]}
+                      title={ name }
+                      selectShelf={this.modifyShelfs}
+                    />)
+                  }
+             )
+          }
+        </div>
+        <div className="open-search">
+          <Link to='/search'>Search</Link>
+        </div>
+      </div>
+    )
+  }
+}
+
+BooksList.propTypes = {
+  shelfs: PropTypes.object.isRequired,
+  updateShelfs: PropTypes.func.isRequired,
+  name: PropTypes.string
+}
+
+export default BooksList
