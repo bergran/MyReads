@@ -1,6 +1,8 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course.
+This project is a book manager for users that sort it into three shelfs: currently
+reading, want to read and read. The project is the final assessment project for 
+Udacity's React Fundamentals course.
 
 ## Install
 
