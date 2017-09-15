@@ -1,0 +1,173 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalWindow {
+  width: 900px;
+  height: 450px;
+  background: #FFF;
+  border-radius: 0.5em;
+  position: relative;
+  font-size: 13px;
+}
+
+.modal-header {
+  position: relative;
+  top: 0px;
+  background: #2e7c31;
+  height: 2em;
+  border-radius: 0.5em 0.5em 0px 0px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.icon-right {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  margin-right: 15px;
+}
+
+.icon:hover {
+  cursor: pointer
+}
+
+.icon-close {
+  background-color: red;
+  color: #FFF
+}
+
+.modal-body {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.modal-cover {
+  width: 10.4em;
+  height: 193px;
+  background-repeat: no-repeat;
+  margin-right: 2em;
+}
+
+.modal-head-body {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.modal-description {
+  width: 55em;
+  height: 13em;
+  overflow: auto;
+}
+
+.title-description {
+  font-size: 17px;
+}
+.modal-characters {
+  height: 16em;
+  position: relative;
+  width: 100%;
+}
+
+.modal-properties {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+li.elementProperty {
+  width: 50%
+}
+
+.authors {
+  list-style: none;
+}
+
+.property {
+  display: inline
+}
+
+.rate-container {
+  display: flex;
+  width: inherit;
+}
+
+.rate {
+  width: 20px;
+  height: 20px;
+}
+
+.star {
+  background-image: url('./icons/star.ico');
+}
+
+.nstar {
+  background-image: url('./icons/nstar.ico');
+}
+
+@media screen and (max-width: 740px) {
+  .modalWindow {
+    width: 80%;
+    height: 90%;
+    background-color: #fff;
+    border-radius: 0.5em;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    overflow: scroll;
+    height: 100%;
+  }
+
+  .modal-cover {
+    margin-right: 0em;
+    width: 50%;
+    height: 163px;
+  }
+
+  .modal-head-body {
+    flex-direction: column;
+    -ms-align-items: center;
+    align-items: center;
+    font-size: 1.2em
+  }
+
+  .modal-description {
+    width: 100%;
+    height: auto;
+    margin: 2em 0;
+  }
+
+  .modal-properties {
+    padding-left: 5px;
+  }
+}
+
+@media screen and (min-width: 741px) and (max-width: 1024px) {
+  .modalWindow {
+    width: 650px;
+    height: 550px;
+    background: #FFF;
+    border-radius: 0.5em;
+  }
+
+  }
