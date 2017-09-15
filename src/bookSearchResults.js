@@ -21,7 +21,7 @@ const BookSearchResult = (props) => {
                 bookSorted.map((book) =>
                     <li key={book.id}>
                         <Book selectShelf={onSelect}
-                              {...book}
+                              book={book}
                         />
                     </li>
                 )}

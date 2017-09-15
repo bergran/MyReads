@@ -17,18 +17,9 @@ import { Shelfs } from './shelfObject'
 class BooksList extends Component {
 
   modifyShelfs = (bookMod, shelfMod) => {
-    const { shelfs, updateShelfs } = this.props
-    let shelfAux = []
+    const { updateShelfs } = this.props
     BooksAPI.update(bookMod, shelfMod).then(data => {
-      shelfAux = shelfs[bookMod.shelf].filter(bookSaved =>
-        bookMod.id !== bookSaved.id
-      )
-      shelfs[bookMod.shelf] = shelfAux
-      if (shelfMod !== 'none') {
-        bookMod.shelf = shelfMod
-        shelfs[shelfMod].push(bookMod)
-      }
-      updateShelfs(shelfs)
+      updateShelfs(bookMod, shelfMod)
     })
   }
 

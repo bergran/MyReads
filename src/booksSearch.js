@@ -25,7 +25,7 @@ class BookSearch extends Component {
       books = data.map((book) => {
         const booksSaved = this.props.books
         booksSaved.forEach(bookSave => {
-          book.id === bookSave.id ? book.shelf = bookSave.shelf : null
+          book.shelf = book.id === bookSave.id ? bookSave.shelf : null
         })
         return book
       })
