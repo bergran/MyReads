@@ -14,68 +14,59 @@ class BooksApp extends React.Component {
     super(props)
     const shelfs = new Shelfs()
     const shelfObject = {}
-    shelfs.getAsValue().forEach(name => shelfObject[name] = [])
     this.state = {
-      shelfs: shelfObject,
+      shelf: [],
       load: false
     }
-
   }
 
   componentDidMount () {
       BooksAPI.getAll().then(books =>
-         this.fillShelfs(books)
+         this.fillShelf(books)
       ).catch((e) => console.log(e))
     }
 
-  updateShelfs = (shelfs) => {
-    this.setState({shelfs})
+  updateShelfs = (bookMod, shelfMod) => {
+    let { shelf } = this.state
+    shelf = shelf.filter(book => book.id !== bookMod.id)
+    bookMod.shelf = shelfMod
+    shelf.push(bookMod)
+    this.setState({shelf})
   }
 
-  addBook = (book, shelf) => {
-    const { shelfs } = this.state
-    shelfs[shelf].push(book)
-    this.setState({shelfs})
-  }
-
-  fillShelfs = books => {
-    let { shelfs } = this.state
-    books.forEach(book => {
-      const shelf = book.shelf
-      shelfs[shelf].push(book)
-    })
-    this.setState({ shelfs: shelfs, load: true })
+  fillShelf = books => {
+    this.setState({ shelf: books, load: true })
   }
 
   getBooks = () => {
-      const shelfsObject = new Shelfs()
-      const { shelfs } = this.state
-      let books = []
-      shelfsObject.getAsValue().forEach(shelf => {
-          shelfs[shelf].forEach(book => books.push(book))
-          }
-      )
-      return books
+      return this.state.shelf
   }
 
   render() {
     const { shelfs, load } = this.state
     const shelfsObject = new Shelfs()
     const books = this.getBooks()
+    const shelfObject = {}
+    books.forEach(book => {
+      if (shelfObject[book.shelf]) {
+        shelfObject[book.shelf].push(book)
+      } else {
+        shelfObject[book.shelf] = [book]
+      }
+    })
     return (
       <div className="app">
         <Route exact path='/' render={
           () => load && <BooksList
             name={APPNAME}
-            shelfs={shelfs}
-            shelfsName={shelfsObject}
+            shelfs={shelfObject}
             updateShelfs={this.updateShelfs}
           />
         }
         />
         <Route exact path='/search' render={
           () => (<BookSearch
-                    onAdd={this.addBook}
+                    onAdd={this.updateShelfs}
                     books={books}
                 />)
         }
