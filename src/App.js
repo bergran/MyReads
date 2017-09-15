@@ -5,15 +5,12 @@ import BooksList from './booksList'
 import BookSearch from './booksSearch'
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import { Shelfs } from './shelfObject'
 import { APPNAME } from './constants'
 
 class BooksApp extends React.Component {
 
   constructor (props) {
     super(props)
-    const shelfs = new Shelfs()
-    const shelfObject = {}
     this.state = {
       shelf: [],
       load: false
@@ -43,8 +40,7 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    const { shelfs, load } = this.state
-    const shelfsObject = new Shelfs()
+    const { load } = this.state
     const books = this.getBooks()
     const shelfObject = {}
     books.forEach(book => {
