@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import { SelectShelf } from './select'
 import { BookModal } from './bookModal'
+import PropTypes from 'prop-types'
+
+/**
+* Component that renders a book, it has an event that active modal with data
+*
+* @param book (object): contains all book properties to show to the user
+* @param SelectShelf (func): it's a callback function where is send a book and
+* new shelf for him
+**/
 
 class Book extends Component {
 
@@ -50,6 +59,11 @@ class Book extends Component {
       </div>
     )
   }
+}
+
+Book.proptTypes = {
+  book: PropTypes.object.isRequired,
+  selectShelf: PropTypes.func.isRequired
 }
 
 export default Book

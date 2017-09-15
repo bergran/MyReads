@@ -2,8 +2,16 @@ import React from 'react'
 import { Rate } from './rate'
 import { ModalHeader } from './modalHeader';
 import { ModalHeadBody } from './ModalHeadBody'
-
 import { Shelfs } from './shelfObject'
+import PropTypes from 'prop-types'
+
+/**
+* Component that renders a modal with more data from book
+*
+* @param book (object): contains all book properties to show to the user
+* @param close (func): func callback to send close new state
+**/
+
 const BookModal = props => {
   const { book, close } = props
   const shelfObject = new Shelfs()
@@ -62,6 +70,11 @@ const BookModal = props => {
       </div>
     </div>
   )
+}
+
+BookModal.propTypes = {
+  book: PropTypes.object.isRequired,
+  close: PropTypes.func.isRequired
 }
 
 export { BookModal }
