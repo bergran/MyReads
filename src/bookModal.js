@@ -3,6 +3,7 @@ import { Rate } from './rate'
 import { ModalHeader } from './modalHeader';
 import { ModalHeadBody } from './ModalHeadBody'
 import { Shelfs } from './shelfObject'
+import PropTypes from 'prop-types'
 
 /**
 * Component that renders a modal with more data from book
